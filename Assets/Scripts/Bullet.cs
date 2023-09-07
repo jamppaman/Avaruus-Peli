@@ -22,10 +22,21 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy") 
+        {
+            Enemy target = other.gameObject.GetComponent<Enemy>();
+            target.Die();
+            DestroyBullet();
+        }
+    }
+
     void DestroyBullet()
     {
         GameObject playerObject = GameObject.FindWithTag("Player");
         Player playerValues = playerObject.GetComponent<Player>();
+        playerValues.fireRate++;
 
         Destroy(this.gameObject);
     }
