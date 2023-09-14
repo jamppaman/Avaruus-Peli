@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyPrefab;
     public List<GameObject> enemyList = new List<GameObject>();
     public int enemySpacing = 7;
+    public float boundaries = 35f;
 
     public bool enemySide = false;
     public float enemySpeed = 10f;
@@ -44,7 +45,7 @@ public class EnemyManager : MonoBehaviour
         bool result = true;
         foreach(GameObject enemy in enemies) 
         {
-            if (enemy.transform.position.x > 35 || enemy.transform.position.x < -35) 
+            if (enemy.transform.position.x > boundaries || enemy.transform.position.x < -boundaries) 
             {
                 result = false;
             }

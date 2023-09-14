@@ -10,10 +10,12 @@ public class Player : MonoBehaviour
     public int fireRate = 3;
 
     public GameObject bullet;
-
+    public GameObject enemyManager;
+    private float playerBoundary;
     void Start()
     {
-       
+       EnemyManager evil = enemyManager.GetComponent<EnemyManager>();
+        playerBoundary = evil.boundaries;
     }
     void FixedUpdate()
     {
@@ -58,14 +60,14 @@ public class Player : MonoBehaviour
     {
         bool result = true;
 
-            if (playerModel.transform.position.x > 35 && goingLeft == false|| playerModel.transform.position.x < -35 && goingLeft == true)
+            if (playerModel.transform.position.x > playerBoundary && goingLeft == false|| playerModel.transform.position.x < -playerBoundary && goingLeft == true)
             {
                 result = false;
             }
         return result;
     }
 
-    private void PlayerDie() 
+    public void PlayerDie() 
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
