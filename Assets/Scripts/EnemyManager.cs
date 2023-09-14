@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> enemyList = new List<GameObject>();
     public int enemySpacing = 7;
     public float boundaries = 35f;
+    public int enemyAmmoPool = 3;
 
     public bool enemySide = false;
     public float enemySpeed = 10f;

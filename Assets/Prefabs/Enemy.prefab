@@ -147,3 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  enemyBullet: {fileID: 5600529316198989266, guid: 074b30d8090eb8a4cbd3f9f99ecc2be4, type: 3}
+  playerTarget: {fileID: 0}
+  reloadMax: 3
+  reloadMin: 0.1

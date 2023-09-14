@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
-            DestroyPlayerBullet();
+            DestroyBullet();
         }
     }
 
@@ -33,15 +33,30 @@ public class Bullet : MonoBehaviour
         {
             Enemy target = other.gameObject.GetComponent<Enemy>();
             target.Die();
-            DestroyPlayerBullet();
+            DestroyBullet();
+        }
+        if (other.gameObject.tag == "Player" && firedByPlayer == false)
+        {
+            Player target = other.gameObject.GetComponent<Player>();
+            target.PlayerDie();
+            DestroyBullet();
         }
     }
 
-    void DestroyPlayerBullet()
+    void DestroyBullet()
     {
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        Player playerValues = playerObject.GetComponent<Player>();
-        playerValues.fireRate++;
+        if(firedByPlayer == true) 
+        {
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            Player playerValues = playerObject.GetComponent<Player>();
+            playerValues.fireRate++;
+        }
+        if(firedByPlayer == false) 
+        {
+            GameObject enemyObject = GameObject.FindWithTag("EnemyManager");
+            EnemyManager enemyValues = enemyObject.GetComponent<EnemyManager>();
+            enemyValues.enemyAmmoPool++;
+        }
 
         Destroy(this.gameObject);
     }
