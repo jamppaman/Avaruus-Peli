@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
-    public EnemyManager manager;
-    public GameObject enemyBullet;
-    public GameObject playerTarget;
-
+    // Ampumis variablet
     private bool enemyReloading = false;
     public float reloadMax = 1.5f;
     public float reloadMin = 0.1f;
     private float reloadCurrent = 0f;
     private bool firingPrimed = false;
+    public GameObject enemyBullet;
 
+    // Assault variablet
     public Vector3 fleetPosition;
+    public Vector3 returnPosition;
     public bool assaulting = false;
-    public float assaultSpeed = 10f;
+
+
+    // referenssit laskurit
+    public EnemyManager manager;
+    public GameObject playerTarget;
+
     void Start()
     {
         manager = GetComponentInParent<EnemyManager>();
@@ -72,7 +78,19 @@ public class Enemy : MonoBehaviour
 
     public void Die() 
     {
+        if(assaulting == true)
+        {
+            assaulting = false;
+            manager.assaultInProgress = false;
+            manager.timeToReturn = false;
+            manager.assaultTimer = Random.Range(0.1f, 2f);
+        }
         manager.enemyList.Remove(this.gameObject);
+
+        if(manager.enemyList.Count == 0)
+        {
+            SceneManager.LoadScene(sceneName: "MainMenu");
+        }
         Destroy(gameObject);
     }
 }

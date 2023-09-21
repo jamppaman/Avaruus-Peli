@@ -167,15 +167,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df3c2ab35b43144a9d2c0aae7865953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAmount: 3
+  enemyAmount: 13
   enemyPrefab: {fileID: 7148443137942595998, guid: e9b55e79fa1e154439c852706217b6ad, type: 3}
   enemyList: []
-  enemySpacing: 8
-  boundaries: 37
-  enemyAmmoPool: 3
+  enemySpacing: 7
+  enemiesPerRow: 4
+  extendingRows: 0
+  fillTillRowFull: 1
   enemySide: 0
-  enemySpeed: 10
+  enemySpeed: 6
+  boundaries: 37
   assaultInProgress: 0
+  assaultTimer: 0
+  assaultSpeed: 10
+  timeToReturn: 0
+  enemyAmmoPool: 3
 --- !u!1 &226392040
 GameObject:
   m_ObjectHideFlags: 0

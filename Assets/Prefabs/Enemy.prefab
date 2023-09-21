@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139245707f7667e4d8d10bf964408c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  enemyBullet: {fileID: 5600529316198989266, guid: 074b30d8090eb8a4cbd3f9f99ecc2be4, type: 3}
-  playerTarget: {fileID: 0}
   reloadMax: 3
   reloadMin: 0.1
+  enemyBullet: {fileID: 5600529316198989266, guid: 074b30d8090eb8a4cbd3f9f99ecc2be4, type: 3}
   fleetPosition: {x: 0, y: 0, z: 0}
+  returnPosition: {x: 0, y: 0, z: 0}
   assaulting: 0
-  assaultSpeed: 10
+  manager: {fileID: 0}
+  playerTarget: {fileID: 0}
