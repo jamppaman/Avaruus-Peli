@@ -13,12 +13,17 @@ public class Enemy : MonoBehaviour
     public float reloadMin = 0.1f;
     private float reloadCurrent = 0f;
     private bool firingPrimed = false;
+
+    public Vector3 fleetPosition;
+    public bool assaulting = false;
+    public float assaultSpeed = 10f;
     void Start()
     {
         manager = GetComponentInParent<EnemyManager>();
         playerTarget = GameObject.FindWithTag("Player");
         enemyReloading = false;
         firingPrimed = false;
+        fleetPosition = this.transform.position;
     }
 
     public void OpenFire()

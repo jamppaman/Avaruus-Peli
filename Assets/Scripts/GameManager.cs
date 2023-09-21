@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public float hp = 100f;
     public Image hpBar;
 
-    public Button damageButton;
-    public Button healButton;
+    public Button quitButton;
     public TextMeshProUGUI ammoText;
     public int ammoAvailable = 3;
 
@@ -18,10 +18,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Button dbm = damageButton.GetComponent<Button>();
-        dbm.onClick.AddListener(TakeDamage);
-        Button hbm = healButton.GetComponent<Button>();
-        hbm.onClick.AddListener(Heal);
+        Button qbn = quitButton.GetComponent<Button>();
+        qbn.onClick.AddListener(EndGame);
 
        
         AmmoCounter();
@@ -30,17 +28,9 @@ public class GameManager : MonoBehaviour
     {
         AmmoCounter();
     }
-    void TakeDamage()
+    void EndGame()
     {
-        hp = hp - 20f;
-        hpBar.fillAmount = hp / 100f;
-    }
-
-    void Heal() 
-    {
-        hp = hp + 15f;
-        hp = Mathf.Clamp(hp, 0, 100);
-        hpBar.fillAmount = hp / 100f;
+        SceneManager.LoadScene(sceneName: "MainMenu");
     }
 
     public void AmmoCounter()
